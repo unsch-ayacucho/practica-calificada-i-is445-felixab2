@@ -1,9 +1,10 @@
-package pe.ued.unsch.entities;
+package pe.edu.unsch.entities;
 // Generated 25/06/2019 05:07:03 PM by Hibernate Tools 5.3.0.Beta2
 
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -15,6 +16,7 @@ public class Proveedor implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
+	@Id
 	private Long idproveedor;
 	private String nombreproveedor;
 	private String ruc;

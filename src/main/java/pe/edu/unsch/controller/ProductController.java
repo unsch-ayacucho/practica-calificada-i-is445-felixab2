@@ -13,11 +13,10 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import pe.edu.unsch.entities.Producto;
 import pe.edu.unsch.service.ProductService;
-import pe.ued.unsch.entities.Producto;
 
 @RestController
-// @RequestMapping("/Producto")
 public class ProductController {
 	
 	@Autowired

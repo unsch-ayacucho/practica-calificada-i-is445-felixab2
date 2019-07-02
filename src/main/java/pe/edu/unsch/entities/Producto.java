@@ -1,8 +1,9 @@
-package pe.ued.unsch.entities;
+package pe.edu.unsch.entities;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -21,6 +22,7 @@ public class Producto implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@Id
 	private Long idproducto;
 	
 	// column es como debe ir en la BD

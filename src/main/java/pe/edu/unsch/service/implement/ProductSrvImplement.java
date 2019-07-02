@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pe.edu.unsch.dao.ProductoDAO;
+import pe.edu.unsch.entities.Producto;
 import pe.edu.unsch.service.ProductService;
-import pe.ued.unsch.entities.Producto;
 
 @Service
 public class ProductSrvImplement implements ProductService{
