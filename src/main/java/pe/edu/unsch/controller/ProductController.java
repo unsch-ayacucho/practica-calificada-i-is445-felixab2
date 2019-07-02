@@ -1,8 +1,10 @@
 package pe.edu.unsch.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,5 +43,10 @@ public class ProductController {
 		this.SrvProduct.SaveProduct(producto);
 		return "producto guardado";
 	}
+    
+    @GetMapping("/listaProductos")
+    public List<Producto>  listaProductos(){
+    	return this.SrvProduct.GetListaProducto();
+    }
 	
 }

@@ -1,12 +1,11 @@
 package pe.edu.unsch.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+
 
 // Generated 25/06/2019 05:07:03 PM by Hibernate Tools 5.3.0.Beta2
 
@@ -16,6 +15,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "producto")
+@Access(AccessType.FIELD)
 public class Producto implements java.io.Serializable {
 
 	/**
@@ -23,6 +23,7 @@ public class Producto implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //Para q el id sea Autoincrementable
 	private Long idproducto;
 	
 	// column es como debe ir en la BD
@@ -35,10 +36,11 @@ public class Producto implements java.io.Serializable {
 	@Column(name = "descripcion")
 	private String descripcion;
 	
-	@Column(name = "idproveedor")
-	private Long idproveedor;
-
-	
+	//@Column(name = "idproveedor")
+	//@OneToMany(mappedBy = "idproveedor", cascade = CascadeType.ALL) //
+	@JoinColumn(name = "idproveedor",referencedColumnName = "idproveedor") //esto es para que no solo venga el ID si no toda la informacion de su llave foranea
+	@ManyToOne
+	private Proveedor idproveedor;
 	
 	
 	public Producto() {
@@ -46,7 +48,7 @@ public class Producto implements java.io.Serializable {
 	}
 
 	public Producto(Long idproducto, @NotNull @Size(min = 1, max = 150) String nombre, String descripcion,
-			Long idproveedor) {
+			Proveedor idproveedor) {
 		super();
 		this.idproducto = idproducto;
 		this.nombre = nombre;
@@ -78,14 +80,23 @@ public class Producto implements java.io.Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public Long getIdproveedor() {
+	public Proveedor getIdproveedor() {
 		return idproveedor;
 	}
 
-	public void setIdproveedor(Long idproveedor) {
+	public void setIdproveedor(Proveedor idproveedor) {
 		this.idproveedor = idproveedor;
 	}
 
-	
+	@Override
+    public String toString() {
+        return "Producto{" +
+                "idproducto=" + idproducto +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\''   +   
+                ",idproveedor=" + idproveedor +
+                '}';
+    }
+
 
 }
