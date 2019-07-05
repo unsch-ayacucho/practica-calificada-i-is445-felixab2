@@ -27,14 +27,14 @@ public class ProveedorController {
 	protected ObjectMapper objProveedor;
 	
 	 @RequestMapping(value = "/SaveOpdateProveedor", method = RequestMethod.POST)
-	 public String GuardarProveedor(@RequestBody String jsonProveedor )
+	 public Proveedor GuardarProveedor(@RequestBody String jsonProveedor )
 			 throws JsonParseException, JsonMappingException, IOException {
 		 this.objProveedor = new ObjectMapper(); 
 		 
 		 Proveedor proveedor = this.objProveedor.readValue(jsonProveedor, Proveedor.class);
 		 
 		 this.SrvProveedor.SaveProveedor(proveedor);
-		 return "Proveedor guardado";
+		 return proveedor;
 	 }
 	 @GetMapping("/listaProveedores")
 	 public List<Proveedor> listarProveedores() {

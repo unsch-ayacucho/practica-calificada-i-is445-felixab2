@@ -29,7 +29,7 @@ public class ProductController {
 	
 	// @PostMapping("/SaveOpdateProducto")
     @RequestMapping(value = "/SaveOpdateProducto", method = RequestMethod.POST)
-	public String GuardarProducto(@RequestBody String jsonProducto ) 
+	public Producto GuardarProducto(@RequestBody String jsonProducto ) 
 			throws JsonParseException, JsonMappingException, IOException {		
 		this.objProducto = new ObjectMapper();
 		
@@ -41,7 +41,7 @@ public class ProductController {
 		
 		// decimos para guardar		
 		this.SrvProduct.SaveProduct(producto);
-		return "producto guardado";
+		return producto;
 	}
     
     @GetMapping("/listaProductos")
